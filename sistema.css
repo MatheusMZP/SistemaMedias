@@ -186,6 +186,21 @@ table tbody tr td:last-child:contains("REPROVADO") {
     color: #f44336; /* Vermelho */
 }
 
+/* Estilo específico para o botão de logout */
+.sidebar a#logoutLink {
+    background-color: #f44336;
+    font-weight: bold;
+}
+
+.sidebar a#logoutLink:hover {
+    background-color: #d32f2f; 
+}
+
+.sidebar a {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
 
 
 @media (max-width: 768px) {

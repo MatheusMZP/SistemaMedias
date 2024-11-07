@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="#" id="homeLink">Home</a>
         <a href="#" id="meuLink">Meu Boletim</a>
         <a href="#" id="supportLink">Suporte</a>
+        <a href="#" id="logoutLink">Logout</a> <!-- Botão de Logout -->
     `;
 
     const professorOptions = `
@@ -16,10 +17,20 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="#" id="boletimLink">Boletim Alunos</a>
         <a href="#" id="inserirNotasLink">Inserir Notas</a>
         <a href="#" id="supportLink">Suporte</a>
+        <a href="#" id="logoutLink">Logout</a> <!-- Botão de Logout -->
     `;
 
     // Define o menu lateral de acordo com o tipo de usuário
     sidebar.innerHTML = userType === 'professor' ? professorOptions : alunoOptions;
+
+    // Seleciona o link de logout após atualizar o sidebar
+    const logoutLink = document.getElementById('logoutLink');
+    if (logoutLink) {
+        logoutLink.addEventListener('click', function() {
+            sessionStorage.clear(); // Limpa o sessionStorage para remover os dados do usuário
+            window.location.href = 'index.html'; // Redireciona para a tela de login
+        });
+    }
 
     const welcomeBox = document.getElementById('welcomeBox');
     const insertBox = document.getElementById('insertBox');
@@ -66,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
             tableContainer2.style.display = 'none'; // Esconde a tabela de boletim (para professores)
         });
     }
-    
 
     if (inserirNotasLink) {
         inserirNotasLink.addEventListener('click', function() {
@@ -96,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const situacaoInput = document.getElementById('situacao');
 
     const submitNotesButton = document.getElementById('submitNotes');
-
     submitNotesButton.addEventListener('click', function() {
         document.getElementById('insertNotesForm').reset();
         alert('Notas foram incluídas com sucesso!');
@@ -139,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
         situacaoInput.value = situacao;
     });
 
-    // Enviar suporte
     const sendSupportButton = document.getElementById('sendSupport');
     sendSupportButton.addEventListener('click', function() {
         const reason = document.getElementById('reason').value;
@@ -154,4 +162,5 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('supportForm').reset();
     });
 });
+
 
